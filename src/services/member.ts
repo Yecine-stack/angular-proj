@@ -9,7 +9,7 @@ import { MemberModel } from '../models/MemberModel';
 @Injectable({
   providedIn: 'root', //sur toute la route de projet
 })
-export class Member {
+export class MemberService {
   constructor(private http:HttpClient){}
   // génerer les requetes http pour 
   // consommer les API du  backend
