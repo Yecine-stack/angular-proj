@@ -24,5 +24,12 @@ export class Member implements OnInit {
 
     testButton() {
   console.log("Button clicked!");
+  delete(id: string){
+    this.MS.deleteMember(id.subscribe(()=>{
+      this.ngOnInit();
+    }));////////
+  }
 }
+
+
 }

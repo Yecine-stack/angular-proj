@@ -19,4 +19,12 @@ export class MemberService {
 
     return this.http.get<MemberModel[]>('http://localhost:3000/members')
   }
+  AddMember(m:MemberModel)
+  {
+    return this.http.post<void>('http://localhost:3000/members',m);
+  }
+  deleteMember(id:String)
+  {
+    return this.http.delete<void>('http://localhost:3000/members'/${id});
+  }
 }

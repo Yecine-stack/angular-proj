@@ -1,1 +1,14 @@
-<p>member-forum works!</p>
+<form [formGroup]="form" (ngSubmit)="sub()">
+
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="Cin" formControlName="cin">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="Nom" formControlName="nom">
+    </mat-form-field>
+
+    <button type="submit">submit</button>
+
+</form>
