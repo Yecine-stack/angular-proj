@@ -5,31 +5,39 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-member',
-  imports: [CommonModule, MatTableModule, MatIconModule, MatButtonModule,RouterLink],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterLink
+  ],
   templateUrl: './member.html',
   styleUrl: './member.css',
 })
 export class Member implements OnInit {
-  constructor(private MS: MemberService){
 
-  }     //saisir le tableau de membres
-  displayedColumns: string[] = ["id", "cin", "nom","icon"];
-    dataSource: any[] = [];
-    ngOnInit(){
-      this.MS.getALLMembers().subscribe((response)=>{
-      this.dataSource=response})
-    }
+  constructor(private MS: MemberService) {}
 
-    testButton() {
-  console.log("Button clicked!");
-  delete(id: string){
-    this.MS.deleteMember(id.subscribe(()=>{
-      this.ngOnInit();
-    }));////////
+  displayedColumns: string[] = ["id", "cin", "nom", "icon"];
+  dataSource: any[] = [];
+
+  ngOnInit() {
+    this.MS.getALLMembers().subscribe((response) => {
+      this.dataSource = response;
+    });
   }
-}
 
+  testButton() {
+    console.log("Button clicked!");
+  }
 
+  deleteMember(id: string) {
+    this.MS.deleteMember(id).subscribe(() => {
+      this.ngOnInit();
+    });
+  }
 }

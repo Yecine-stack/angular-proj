@@ -25,6 +25,6 @@ export class MemberService {
   }
   deleteMember(id:String)
   {
-    return this.http.delete<void>('http://localhost:3000/members'/${id});
+    return this.http.delete<void>(`http://localhost:3000/members/${id}`);
   }
 }
