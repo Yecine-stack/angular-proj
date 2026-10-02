@@ -27,4 +27,10 @@ export class MemberService {
   {
     return this.http.delete<void>(`http://localhost:3000/members/${id}`);
   }
+  getMemberByID(id:String){
+    return this.http.get<MemberModel>(`http://localhost:3000/members/${id}`);
+  }
+  UpdateMember(id:String,m:MemberModel){
+    return this.http.put<MemberModel>(`http://localhost:3000/members/${id}`,m);
+  }
 }

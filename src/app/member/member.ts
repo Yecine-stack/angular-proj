@@ -5,6 +5,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-member',
@@ -20,7 +22,7 @@ import { RouterLink } from '@angular/router';
 })
 export class Member implements OnInit {
 
-  constructor(private MS: MemberService) {}
+  constructor(private MS: MemberService,private dialog:MatDialog) {}
 
   displayedColumns: string[] = ["id", "cin", "nom", "icon"];
   dataSource: any[] = [];
@@ -36,8 +38,18 @@ export class Member implements OnInit {
   }
 
   deleteMember(id: string) {
-    this.MS.deleteMember(id).subscribe(() => {
-      this.ngOnInit();
+    //ouvrir la boite(dialog)
+    let dialogRef = this.dialog.open(ConfirmDialog); //==> lancement de thread observable
+    //attendre le click
+    dialogRef.afterClosed().subscribe((v)=>{   //subscribes until dialog is closed, stores result in v
+      if(v){//v is boolean , means delete is dialog was clicked
+        this.MS.deleteMember(id).subscribe(() => {   //deletes
+          this.ngOnInit();
     });
+      }
+    })
   }
+
+
+  
 }

@@ -9,5 +9,9 @@ export const routes: Routes = [
     },
     {   path:'',
         component:Member
+    },
+    {
+        path:'edit/:id',
+        component:MemberForum
     }
 ];

@@ -26,7 +26,7 @@
   <ng-container matColumnDef="icon">
     <th mat-header-cell *matHeaderCellDef> icon </th>
     <td mat-cell *matCellDef="let element">
-      <mat-icon fontIcon="edit"></mat-icon>
+      <button routerLink="/edit/{{element.id}}"><mat-icon fontIcon="edit"></mat-icon></button>
       <button (click)="deleteMember(element.id)">
         <mat-icon fontIcon="delete"></mat-icon>
       </button>
@@ -36,5 +36,5 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-</table>
+//ay path nzidouh lezem nprogrammiwouh fi fichier de routage ap-routing
+</table> 
